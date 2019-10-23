@@ -9,6 +9,7 @@ import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
@@ -147,8 +148,8 @@ public class CrearNotasMaterias extends AppCompatActivity implements DialogoAgre
 
             MateriasNotas mn = new MateriasNotas();
             //mandar a calcularNota() la ultima nota y el ultimo porcentaje
-            int notaActual = mn.calcularNota(posicionfk, this, itemNotas.get(1).get(itemNotas.get(1).size()-1),
-                    itemNotas.get(2).get(itemNotas.get(2).size()-1));
+            int notaActual = mn.calcularNota(posicionfk, this, itemNotas.get(1).get(cont-limiteFk),
+                    itemNotas.get(2).get(cont-limiteFk));
 
             ContentValues registro = new ContentValues();
 

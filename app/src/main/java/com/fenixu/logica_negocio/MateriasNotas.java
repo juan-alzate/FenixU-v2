@@ -3,6 +3,7 @@ package com.fenixu.logica_negocio;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.fenixu.recursos_datos.AdminSQLiteOpenHelper;
 
@@ -61,12 +62,14 @@ public class MateriasNotas{
                 Cursor pN = db.rawQuery("select porcentaje from notas where idMateria=" + fk + " and idNota=" + i, null);
                 if(pN.moveToFirst()){
                     porcentaje = pN.getInt(0);
+                    Log.d("MateriasNotas","nota actual 1:"+notaActual);
+                    notaActual += (notaAcumulada*(porcentaje));
                 }
-                notaActual += notaAcumulada*porcentaje;
+                Log.d("MateriasNotas","nota actual 2:"+notaActual);
             }
         }
         db.close();
-        return notaActual/10;
+        return notaActual;
     }
 
     public float notaFaltante(){

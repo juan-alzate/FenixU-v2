@@ -74,11 +74,7 @@ public class Notas extends AppCompatActivity implements DialogoCrearMateria.Dial
                     itemMateria.get(1).add(" ");
                     itemMateria.get(3).add(" ");
                     itemMateria.get(4).add(temp_creditos);
-
-
                 }
-
-
             }
         }
             db.close();
@@ -92,7 +88,7 @@ public class Notas extends AppCompatActivity implements DialogoCrearMateria.Dial
                 int m = mayor.getInt(0);
                 Cursor notaActual = db2.rawQuery("select notaActual from notas where idNota="+m,null);
                 if(notaActual.moveToFirst()){
-                    int n =notaActual.getInt(0);
+                    float n =notaActual.getFloat(0)/100;
                     //itemMateria.get(2).add(notaActual.getString(0));
                     itemMateria.get(2).add(String.valueOf(n));
                 }
